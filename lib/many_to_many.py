@@ -62,6 +62,24 @@ class Contract:
         if not isinstance(value, Author):
             raise Exception
         self._author = value
+    
+    @property
+    def date(self):
+        return self._date
+    @date.setter
+    def date(self, value):
+        if not isinstance(value, str):
+            raise Exception
+        self._date = value
+
+    @property
+    def royalties(self):
+        return self._royalties
+    @royalties.setter
+    def royalties(self, value):
+        if not isinstance(value, int):
+            raise Exception
+        self._royalties = value
 
     @classmethod
     def contracts_by_date(self, date):
