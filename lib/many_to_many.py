@@ -3,6 +3,8 @@ class Book:
 
     def __init__(self, title):
         self.title = title
+        self._contracts = []
+        Book.all.append(self)
 
     def contracts(self):
         return list(self._contracts)
@@ -25,7 +27,7 @@ class Author:
     def contracts(self):
         return list(self._contracts)
     
-    def sign_contracts(self, book, date, royalties):
+    def sign_contract(self, book, date, royalties):
         contract = Contract(self, book, date, royalties)
         return contract
     
@@ -41,8 +43,8 @@ class Contract:
         self.book = book
         self.date = date
         self.royalties = royalties
-        # self._author._contracts.append(self)
-        # self._book._contracts.append(self)
+        self._author._contracts.append(self)
+        self._book._contracts.append(self)
         Contract.all.append(self)
         
     @property
